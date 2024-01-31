@@ -1,0 +1,15 @@
+version: '3'
+services:
+  miniconda:
+    build: .
+    image: takyam15/omics-analyzer:latest
+    container_name: jupyterlab
+    env_file:
+      - ./.env
+    command: jupyter lab --ip=0.0.0.0 --allow-root --LabApp.token=''
+    ports:
+     - "8888:8888"
+    volumes:
+     - ./scripts:/work/scripts
+    tty: true
+    stdin_open: true
